@@ -1,0 +1,58 @@
+<div class="container">
+  <h2 i18n>Drag and drop example</h2>
+  <div class="list-container">
+
+    <ng-container cdkDropListGroup>
+      <div class="column-container" *ngFor="let department of allDepartmentsData">
+        <div class="list"
+             cdkDropList
+             [cdkDropListData]="department?.employees"
+             (cdkDropListDropped)="onDrop($event)">
+          <h3>{{department?.name}}</h3>
+          <mat-card *ngFor="let employee of department?.employees" cdkDrag>
+
+            <mat-card-header>
+              <mat-card-title>{{employee?.first_name}} {{employee?.last_name}}</mat-card-title>
+            </mat-card-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-content>
+              <span i18n>DOB: {{employee?.dob | date}}</span><span>{{employee?.speciality}}</span>
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+      </div>
+
+    </ng-container>
+
+    <!--Comment the other cdkDropListGroup to use this.-->
+    <!--Note: It is one and the same but different way of loading a data.-->
+
+    <!-- <ng-container cdkDropListGroup>
+      <div class="column-container" *ngFor="let department of newAllDepartmentsData.employees">
+        <div class="list"
+             cdkDropList
+             [cdkDropListData]="department?.employee"
+             (cdkDropListDropped)="onDrop($event)">
+          <h3>{{department?.name}}</h3>
+          <mat-card *ngFor="let employee of department?.employee" cdkDrag>
+
+            <mat-card-header>
+              <mat-card-title>{{employee?.first_name}} {{employee?.last_name}}</mat-card-title>
+            </mat-card-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-content>
+              <span i18n>DOB: {{employee?.dob | date}}</span><span>{{employee?.speciality}}</span>
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+      </div>
+    </ng-container> -->
+
+  </div>
+</div>
